@@ -19,3 +19,7 @@ Thumbs.db
 # 日志与临时文件
 *.log
 *.tmp
+
+# 数据集（体积大，不入库，需要时重新下载）
+**/cs231n/datasets/
+*.tar.gz
