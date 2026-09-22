@@ -19,8 +19,8 @@ CS231n（视觉与深度学习基础）→ 台大 Transformer（注意力机制�
 
 | 阶段 | 内容 | 状态 |
 | --- | --- | --- |
-| 第 0 周 | 环境搭建（Python / PyTorch / Git / Jupyter） | ✅ 完成 |
-| 第 1-2 周 | CS231n 后半程 + Assignment 1-3 | ⬜ |
+| 第 0 周 | 环境搭建（Python / PyTorch / Git / Jupyter）+ NumPy 补课 | ✅ 完成 |
+| 第 1-2 周 | CS231n 后半程 + Assignment 1-3（Assignment1 之 kNN 已完成，最终准确率 28.2%） | 🔶 进行中 |
 | 第 3 周 | 台大 Transformer + ViT 复现 | ⬜ |
 | 第 4-6 周 | 普林斯顿 COS597R | ⬜ |
 | 第 7 周 | 多模态 CLIP / LLaVA | ⬜ |

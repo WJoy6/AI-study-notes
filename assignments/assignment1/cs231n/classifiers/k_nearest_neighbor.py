@@ -75,6 +75,7 @@ class KNearestNeighbor(object):
                 # training point, and store the result in dists[i, j]. You should   #
                 # not use a loop over dimension, nor use np.linalg.norm().          #
                 #####################################################################
+                dists[i,j]=np.sqrt(np.sum((X[i]-self.X_train[j])**2))
                 pass
         return dists
 
@@ -95,6 +96,7 @@ class KNearestNeighbor(object):
             # points, and store the result in dists[i, :].                        #
             # Do not use np.linalg.norm().                                        #
             #######################################################################
+            dists[i,:]=np.sqrt(np.sum((self.X_train-X[i])**2,axis=1))
             pass
         return dists
 
@@ -121,7 +123,9 @@ class KNearestNeighbor(object):
         # HINT: Try to formulate the l2 distance using matrix multiplication    #
         #       and two broadcast sums.                                         #
         #########################################################################
-
+        test_sq=np.sum(X**2,axis=1,keepdims=True)
+        train_sq=np.sum(self.X_train**2,axis=1)
+        dists=np.sqrt(test_sq+train_sq-2*(X@self.X_train.T))
         return dists
 
     def predict_labels(self, dists, k=1):
@@ -150,7 +154,8 @@ class KNearestNeighbor(object):
             # neighbors. Store these labels in closest_y.                           #
             # Hint: Look up the function numpy.argsort.                             #
             #########################################################################
-
+            idx = np.argsort(dists[i])[:k]      # 距离最小的 k 个训练样本的下标
+            closest_y = self.y_train[idx]       # 这些样本的标签
 
             #########################################################################
             # TODO:                                                                 #
@@ -159,6 +164,7 @@ class KNearestNeighbor(object):
             # Store this label in y_pred[i]. Break ties by choosing the smaller     #
             # label.                                                                #
             #########################################################################
+            y_pred[i] = np.argmax(np.bincount(closest_y))   # 投票：出现次数最多的标签（平局取小的）
 
 
         return y_pred
